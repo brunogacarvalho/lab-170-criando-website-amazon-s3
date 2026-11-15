@@ -1,4 +1,4 @@
-# Lab 170 - Criando um Website no Amazon S3
+# Lab 7 - Lab 170 - Criando um Website no Amazon S3
 
 ## Visão geral
 
