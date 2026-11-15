@@ -1,0 +1,277 @@
+
+:root {
+  --background: #080f1d;
+  --surface: #111d30;
+  --surface-light: #172740;
+  --primary: #38a5ff;
+  --primary-light: #78c4ff;
+  --text: #e8f0fa;
+  --muted: #a5b4c8;
+  --border: #263b56;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+}
+
+.container {
+  width: min(1080px, 90%);
+  margin: auto;
+}
+
+.hero {
+  padding: 85px 0 75px;
+  background: linear-gradient(135deg, #101f36, #08101e 75%);
+  border-bottom: 1px solid var(--border);
+}
+
+.tag {
+  display: inline-block;
+  color: var(--primary-light);
+  font-size: 0.78rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+}
+
+h1 {
+  max-width: 800px;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  color: var(--primary-light);
+  font-size: 1.05rem;
+}
+
+.hero-line {
+  width: 65px;
+  height: 4px;
+  background: var(--primary);
+  margin: 28px 0;
+  border-radius: 5px;
+}
+
+.intro {
+  max-width: 790px;
+  color: var(--muted);
+}
+
+.section {
+  padding: 65px 0 10px;
+}
+
+.section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.info-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 25px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.info-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+}
+
+.card-number {
+  color: var(--primary);
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.info-card h3 {
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+.info-card p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.learning {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 35px;
+  margin-top: 65px;
+}
+
+.learning h2 {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.learning ul {
+  padding-left: 22px;
+  color: var(--muted);
+}
+
+.learning li {
+  margin: 9px 0;
+}
+
+.flashcards-section {
+  padding-bottom: 75px;
+}
+
+.section-description {
+  text-align: center;
+  color: var(--muted);
+  margin: -15px 0 28px;
+}
+
+.flashcard {
+  max-width: 650px;
+  min-height: 340px;
+  margin: auto;
+  padding: 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.flashcard-top {
+  display: flex;
+  justify-content: space-between;
+  color: var(--primary-light);
+  font-size: 0.78rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.flashcard-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 35px 10px;
+}
+
+.flashcard-content h3 {
+  font-size: 1.35rem;
+  line-height: 1.5;
+}
+
+.answer {
+  color: var(--muted);
+  margin-top: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 0.92rem;
+  font-weight: bold;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.answer-button {
+  background: var(--primary);
+  color: #07111f;
+  align-self: center;
+  min-width: 190px;
+}
+
+.answer-button:hover {
+  background: var(--primary-light);
+}
+
+.flashcard-navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.nav-button {
+  background: var(--surface-light);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.nav-button:hover:not(:disabled) {
+  border-color: var(--primary);
+  background: #203653;
+}
+
+button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 35px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+footer a {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--primary-light);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 650px) {
+  .hero {
+    padding: 60px 0;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .learning {
+    padding: 25px;
+  }
+
+  .flashcard {
+    padding: 20px;
+  }
+}

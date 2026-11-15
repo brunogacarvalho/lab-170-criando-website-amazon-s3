@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lab 170 - Criação e hospedagem de website estático utilizando Amazon S3 e AWS CLI.">
+  <title>Lab 170 | Website no Amazon S3</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <span class="tag">AWS CLOUD LAB</span>
+      <h1>Criando um Website no Amazon S3</h1>
+      <p class="subtitle">Lab 170 - Hospedagem de site estático utilizando Amazon S3 e AWS CLI</p>
+      <div class="hero-line"></div>
+      <p class="intro">
+        Neste laboratório, pratiquei a criação de um bucket S3, a configuração
+        da hospedagem de site estático e a publicação de arquivos utilizando
+        o AWS CLI. Também desenvolvi um script Bash para facilitar as atualizações.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <h2>Atividades realizadas</h2>
+      <div class="cards-grid">
+        <article class="info-card">
+          <span class="card-number">01</span>
+          <h3>Amazon S3</h3>
+          <p>Criação de bucket e configuração de recursos para armazenamento dos arquivos do website.</p>
+        </article>
+        <article class="info-card">
+          <span class="card-number">02</span>
+          <h3>Permissões</h3>
+          <p>Configuração de acesso público e habilitação de ACLs para os objetos do bucket.</p>
+        </article>
+        <article class="info-card">
+          <span class="card-number">03</span>
+          <h3>Website estático</h3>
+          <p>Habilitação da hospedagem estática e publicação dos arquivos HTML, CSS e imagens.</p>
+        </article>
+        <article class="info-card">
+          <span class="card-number">04</span>
+          <h3>AWS CLI e Bash</h3>
+          <p>Utilização de comandos AWS CLI e criação de script para automatizar o envio de atualizações.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section learning">
+      <h2>O que aprendi</h2>
+      <ul>
+        <li>Criar e configurar buckets no Amazon S3 usando AWS CLI.</li>
+        <li>Configurar permissões para acesso público aos arquivos.</li>
+        <li>Habilitar hospedagem de websites estáticos no S3.</li>
+        <li>Publicar e atualizar arquivos de um website com comandos AWS CLI.</li>
+        <li>Automatizar tarefas de atualização utilizando scripts Bash.</li>
+      </ul>
+    </section>
+
+    <section class="section flashcards-section">
+      <h2>Teste seus conhecimentos</h2>
+      <p class="section-description">Revise os principais conceitos deste laboratório com 8 flashcards interativos.</p>
+
+      <div class="flashcard">
+        <div class="flashcard-top">
+          <span>FLASHCARD</span>
+          <span id="counter">1 / 8</span>
+        </div>
+        <div class="flashcard-content">
+          <h3 id="question">O que é o Amazon S3?</h3>
+          <p id="answer" class="answer hidden"></p>
+        </div>
+        <button id="show-answer" class="answer-button">Mostrar resposta</button>
+        <div class="flashcard-navigation">
+          <button id="previous" class="nav-button" disabled>Anterior</button>
+          <button id="next" class="nav-button">Próximo</button>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Lab 170 - Criando um Website no Amazon S3</p>
+      <p>Formação em Computação em Nuvem | Escola da Nuvem</p>
+      <a href="https://github.com/brunogacarvalho/lab-170-criando-website-amazon-s3" target="_blank" rel="noopener noreferrer">Ver repositório no GitHub</a>
+    </footer>
+  </main>
+
+  <script>
+    const flashcards = [
+      {
+        question: "O que é o Amazon S3?",
+        answer: "É um serviço de armazenamento de objetos da AWS, utilizado para armazenar e disponibilizar arquivos."
+      },
+      {
+        question: "O que é um bucket no Amazon S3?",
+        answer: "É um recipiente lógico utilizado para armazenar objetos, como documentos, imagens e arquivos de websites."
+      },
+      {
+        question: "O que é um website estático?",
+        answer: "É um site formado por arquivos como HTML, CSS, JavaScript e imagens, sem necessidade de processamento no servidor para gerar páginas dinâmicas."
+      },
+      {
+        question: "Qual é a função da hospedagem de site estático no S3?",
+        answer: "Permitir que os arquivos de um website sejam disponibilizados por meio de um endpoint de hospedagem do bucket."
+      },
+      {
+        question: "Para que serve o comando aws s3 cp?",
+        answer: "É utilizado para copiar arquivos entre o armazenamento local e o Amazon S3."
+      },
+      {
+        question: "Qual é a função da opção --recursive no AWS CLI?",
+        answer: "Permite aplicar a operação a todos os arquivos e subdiretórios de uma pasta."
+      },
+      {
+        question: "Para que serve o script update-website.sh?",
+        answer: "Para reunir o comando de envio dos arquivos ao S3 e facilitar a publicação de atualizações do website."
+      },
+      {
+        question: "Qual é a diferença entre aws s3 cp e aws s3 sync?",
+        answer: "O cp copia arquivos conforme os parâmetros informados. O sync compara a origem e o destino e transfere os arquivos novos ou alterados, além de poder excluir arquivos de destino com a opção --delete."
+      }
+    ];
+
+    let current = 0;
+    let revealed = false;
+
+    const question = document.getElementById("question");
+    const answer = document.getElementById("answer");
+    const counter = document.getElementById("counter");
+    const showButton = document.getElementById("show-answer");
+    const previousButton = document.getElementById("previous");
+    const nextButton = document.getElementById("next");
+
+    function renderCard() {
+      question.textContent = flashcards[current].question;
+      answer.textContent = flashcards[current].answer;
+      answer.classList.add("hidden");
+      showButton.textContent = "Mostrar resposta";
+      counter.textContent = `${current + 1} / ${flashcards.length}`;
+      previousButton.disabled = current === 0;
+      nextButton.disabled = current === flashcards.length - 1;
+      revealed = false;
+    }
+
+    showButton.addEventListener("click", () => {
+      revealed = !revealed;
+      answer.classList.toggle("hidden", !revealed);
+      showButton.textContent = revealed ? "Ocultar resposta" : "Mostrar resposta";
+    });
+
+    previousButton.addEventListener("click", () => {
+      if (current > 0) {
+        current--;
+        renderCard();
+      }
+    });
+
+    nextButton.addEventListener("click", () => {
+      if (current < flashcards.length - 1) {
+        current++;
+        renderCard();
+      }
+    });
+
+    renderCard();
+  </script>
+</body>
+</html>
